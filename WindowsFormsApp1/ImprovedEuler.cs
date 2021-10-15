@@ -12,10 +12,11 @@
                 }
                 else
                 {
-                    y[i] = y[i - 1] + h * ((differentialEquation(x[i], y[i]) +
-                                            differentialEquation(x[i] + h,
-                                                y[i] + h * differentialEquation(x[i], y[i])))/2);
+                    y[i] = y[i - 1] + (h/2) * ((differentialEquation(x[i-1], y[i-1]) +
+                                            differentialEquation(x[i-1] + h,
+                                                y[i-1] + h * differentialEquation(x[i-1], y[i-1]))));
                 }
+                
             }
         }
     }

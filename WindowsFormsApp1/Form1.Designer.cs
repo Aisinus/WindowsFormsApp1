@@ -43,7 +43,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripLabel1, this.toolStripButton1, this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(675, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(980, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,7 +80,7 @@
             this.containerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.containerControl1.Location = new System.Drawing.Point(0, 25);
             this.containerControl1.Name = "containerControl1";
-            this.containerControl1.Size = new System.Drawing.Size(675, 449);
+            this.containerControl1.Size = new System.Drawing.Size(980, 751);
             this.containerControl1.TabIndex = 1;
             this.containerControl1.Text = "containerControl1";
             // 
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 474);
+            this.ClientSize = new System.Drawing.Size(980, 776);
             this.Controls.Add(this.containerControl1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
