@@ -40,6 +40,8 @@ namespace WindowsFormsApp1
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.formsPlot1 = new ScottPlot.FormsPlot();
+            this.label5 = new System.Windows.Forms.Label();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -53,7 +55,6 @@ namespace WindowsFormsApp1
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.formsPlot1 = new ScottPlot.FormsPlot();
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,6 +78,7 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox4);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox3);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox2);
@@ -157,6 +159,25 @@ namespace WindowsFormsApp1
             this.chart1.Size = new System.Drawing.Size(580, 297);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            // 
+            // formsPlot1
+            // 
+            this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
+            this.formsPlot1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formsPlot1.Location = new System.Drawing.Point(0, 0);
+            this.formsPlot1.Name = "formsPlot1";
+            this.formsPlot1.Size = new System.Drawing.Size(580, 310);
+            this.formsPlot1.TabIndex = 0;
+            this.formsPlot1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formsPlot1_MouseMove);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Location = new System.Drawing.Point(4, 448);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(258, 25);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "label5";
             // 
             // checkBox4
             // 
@@ -284,15 +305,6 @@ namespace WindowsFormsApp1
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // formsPlot1
-            // 
-            this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
-            this.formsPlot1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formsPlot1.Location = new System.Drawing.Point(0, 0);
-            this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(580, 310);
-            this.formsPlot1.TabIndex = 0;
-            // 
             // Plot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +325,8 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize) (this.chart1)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label label5;
 
         private ScottPlot.FormsPlot formsPlot1;
 

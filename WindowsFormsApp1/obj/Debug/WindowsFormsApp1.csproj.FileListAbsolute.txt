@@ -35,5 +35,4 @@ C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\ru\FSha
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\tr\FSharp.Core.resources.dll
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\zh-Hans\FSharp.Core.resources.dll
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\zh-Hant\FSharp.Core.resources.dll
-C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.test.resources
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
