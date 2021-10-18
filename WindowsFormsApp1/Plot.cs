@@ -13,10 +13,12 @@ namespace WindowsFormsApp1
         private ScottPlot.Plottable.ScatterPlot HighlightedPoint;
         private int LastHighlightedIndex = -1;
         
-        double distancetomouse(double pointX,double pointY)
+        double distancetomouse(ScottPlot.Plottable.ScatterPlot graph ,double pointX,double pointY)
         {
             (double mouseCoordX, double mouseCoordY) = formsPlot1.GetMouseCoordinates();
-            return Math.Sqrt(Math.Pow(pointX-mouseCoordX,2) + Math.Pow(pointY-mouseCoordY,2));
+            if(graph.IsVisible == true) return Math.Sqrt(Math.Pow(pointX-mouseCoordX,2) + Math.Pow(pointY-mouseCoordY,2));
+            
+            return Double.MaxValue;
         }
 
         void firstGraphDraw()
@@ -108,10 +110,10 @@ namespace WindowsFormsApp1
             (double pointXimprove, double pointYimprove, int pointIndeximprove) = impreulerGraph.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
             (double pointXrunge, double pointYrunge, int pointIndexrunge) = rungeGraph.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
             
-            var distanceExact = distancetomouse(pointXexact, pointYexact);
-            var distanceEuler = distancetomouse(pointXeuler, pointYeuler);
-            var distanceImprove = distancetomouse(pointXimprove, pointYimprove);
-            var distanceRunge = distancetomouse(pointXrunge, pointYrunge);
+            var distanceExact = distancetomouse(exactGraph,pointXexact, pointYexact);
+            var distanceEuler = distancetomouse(eulerGraph,pointXeuler, pointYeuler);
+            var distanceImprove = distancetomouse(impreulerGraph,pointXimprove, pointYimprove);
+            var distanceRunge = distancetomouse(rungeGraph,pointXrunge, pointYrunge);
 
             var minDistance = Math.Min(distanceExact, distanceEuler);
             minDistance = Math.Min(minDistance, distanceImprove);
