@@ -60,6 +60,7 @@ namespace WindowsFormsApp1
         public Plot()
         {
             InitializeComponent();
+            firstGraphDraw();
             
         }
 

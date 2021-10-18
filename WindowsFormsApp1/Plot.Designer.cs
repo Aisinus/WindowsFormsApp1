@@ -35,6 +35,11 @@ namespace WindowsFormsApp1
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.formsPlot1 = new ScottPlot.FormsPlot();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.formsPlot2 = new ScottPlot.FormsPlot();
+            this.containerControl1 = new System.Windows.Forms.ContainerControl();
+            this.formsPlot3 = new ScottPlot.FormsPlot();
+            this.label7 = new System.Windows.Forms.Label();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -54,7 +59,9 @@ namespace WindowsFormsApp1
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.containerControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,6 +76,7 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.containerControl1);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox4);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox3);
             this.splitContainer1.Panel2.Controls.Add(this.checkBox2);
@@ -82,8 +90,8 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel2.Controls.Add(this.textBox2);
             this.splitContainer1.Panel2.Controls.Add(this.textBox3);
             this.splitContainer1.Panel2.Controls.Add(this.button1);
-            this.splitContainer1.Size = new System.Drawing.Size(980, 776);
-            this.splitContainer1.SplitterDistance = 663;
+            this.splitContainer1.Size = new System.Drawing.Size(1154, 805);
+            this.splitContainer1.SplitterDistance = 599;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -97,8 +105,13 @@ namespace WindowsFormsApp1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.formsPlot1);
             this.splitContainer2.Panel1.Controls.Add(this.label5);
-            this.splitContainer2.Size = new System.Drawing.Size(663, 776);
-            this.splitContainer2.SplitterDistance = 406;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.label6);
+            this.splitContainer2.Panel2.Controls.Add(this.formsPlot2);
+            this.splitContainer2.Size = new System.Drawing.Size(599, 805);
+            this.splitContainer2.SplitterDistance = 393;
             this.splitContainer2.TabIndex = 0;
             // 
             // formsPlot1
@@ -107,18 +120,65 @@ namespace WindowsFormsApp1
             this.formsPlot1.BackColor = System.Drawing.Color.Transparent;
             this.formsPlot1.Location = new System.Drawing.Point(3, 3);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(649, 355);
+            this.formsPlot1.Size = new System.Drawing.Size(585, 355);
             this.formsPlot1.TabIndex = 0;
             this.formsPlot1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formsPlot1_MouseMove);
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Location = new System.Drawing.Point(3, 373);
+            this.label5.Location = new System.Drawing.Point(3, 360);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(657, 25);
+            this.label5.Size = new System.Drawing.Size(593, 25);
             this.label5.TabIndex = 13;
             this.label5.Text = "label5";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.Location = new System.Drawing.Point(3, 374);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(593, 25);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "label6";
+            // 
+            // formsPlot2
+            // 
+            this.formsPlot2.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.formsPlot2.BackColor = System.Drawing.Color.Transparent;
+            this.formsPlot2.Location = new System.Drawing.Point(4, 3);
+            this.formsPlot2.Name = "formsPlot2";
+            this.formsPlot2.Size = new System.Drawing.Size(592, 366);
+            this.formsPlot2.TabIndex = 0;
+            // 
+            // containerControl1
+            // 
+            this.containerControl1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.containerControl1.Controls.Add(this.formsPlot3);
+            this.containerControl1.Controls.Add(this.label7);
+            this.containerControl1.Location = new System.Drawing.Point(4, 396);
+            this.containerControl1.Name = "containerControl1";
+            this.containerControl1.Size = new System.Drawing.Size(544, 406);
+            this.containerControl1.TabIndex = 13;
+            this.containerControl1.Text = "containerControl1";
+            // 
+            // formsPlot3
+            // 
+            this.formsPlot3.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.formsPlot3.BackColor = System.Drawing.Color.Transparent;
+            this.formsPlot3.Location = new System.Drawing.Point(-2, 4);
+            this.formsPlot3.Name = "formsPlot3";
+            this.formsPlot3.Size = new System.Drawing.Size(543, 368);
+            this.formsPlot3.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Location = new System.Drawing.Point(-2, 375);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(543, 25);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "label7";
             // 
             // checkBox4
             // 
@@ -202,7 +262,7 @@ namespace WindowsFormsApp1
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Location = new System.Drawing.Point(2, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 15);
             this.label1.TabIndex = 5;
@@ -214,7 +274,7 @@ namespace WindowsFormsApp1
             this.textN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.textN.Location = new System.Drawing.Point(3, 159);
             this.textN.Name = "textN";
-            this.textN.Size = new System.Drawing.Size(307, 21);
+            this.textN.Size = new System.Drawing.Size(545, 21);
             this.textN.TabIndex = 4;
             this.textN.Text = "5";
             // 
@@ -224,7 +284,7 @@ namespace WindowsFormsApp1
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.textBox1.Location = new System.Drawing.Point(3, 113);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 21);
+            this.textBox1.Size = new System.Drawing.Size(545, 21);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "8";
             // 
@@ -234,7 +294,7 @@ namespace WindowsFormsApp1
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.textBox2.Location = new System.Drawing.Point(3, 27);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(307, 21);
+            this.textBox2.Size = new System.Drawing.Size(545, 21);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "1";
             // 
@@ -244,16 +304,16 @@ namespace WindowsFormsApp1
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.textBox3.Location = new System.Drawing.Point(3, 70);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(307, 21);
+            this.textBox3.Size = new System.Drawing.Size(545, 21);
             this.textBox3.TabIndex = 1;
             this.textBox3.Text = "0";
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(2, 481);
+            this.button1.Location = new System.Drawing.Point(2, 321);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(308, 34);
+            this.button1.Size = new System.Drawing.Size(546, 34);
             this.button1.TabIndex = 0;
             this.button1.Text = "Draw";
             this.button1.UseVisualStyleBackColor = true;
@@ -263,7 +323,7 @@ namespace WindowsFormsApp1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 776);
+            this.ClientSize = new System.Drawing.Size(1154, 805);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Plot";
             this.Text = "Plot";
@@ -273,10 +333,20 @@ namespace WindowsFormsApp1
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.containerControl1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private ScottPlot.FormsPlot formsPlot3;
+
+        private ScottPlot.FormsPlot formsPlot2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+
+        private System.Windows.Forms.ContainerControl containerControl1;
 
         private System.Windows.Forms.Label label5;
 
