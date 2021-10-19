@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using ScottPlot.Plottable;
 
 namespace WindowsFormsApp1
 {
@@ -8,7 +10,7 @@ namespace WindowsFormsApp1
     {
         private  ScottPlot.Plottable.ScatterPlot exactGraph;
         private  ScottPlot.Plottable.ScatterPlot eulerGraph;
-        private ScottPlot.Plottable.ScatterPlot impreulerGraph;
+        private ScottPlot.Plottable.ScatterPlot improvedEulerGraph;
         private  ScottPlot.Plottable.ScatterPlot rungeGraph;
         private ScottPlot.Plottable.ScatterPlot HighlightedPoint;
         private int LastHighlightedIndex = -1;
@@ -44,12 +46,13 @@ namespace WindowsFormsApp1
 
             exactGraph = formsPlot1.Plot.AddScatter(exact.x, exact.y, label:"exact");
             eulerGraph = formsPlot1.Plot.AddScatter(euler.x, euler.y, label:"euler");
-            impreulerGraph = formsPlot1.Plot.AddScatter(improvedEuler.x, improvedEuler.y, label: "improve Euler");
+            improvedEulerGraph = formsPlot1.Plot.AddScatter(improvedEuler.x, improvedEuler.y, label: "improve Euler");
             rungeGraph = formsPlot1.Plot.AddScatter(rungeKutta.x, rungeKutta.y, label: "runge kutta");
+            
 
             exactGraph.IsVisible = checkBox1.Checked;
             eulerGraph.IsVisible = checkBox2.Checked;
-            impreulerGraph.IsVisible = checkBox3.Checked;
+            improvedEulerGraph.IsVisible = checkBox3.Checked;
             rungeGraph.IsVisible = checkBox4.Checked;
                 
                 
@@ -92,7 +95,7 @@ namespace WindowsFormsApp1
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            impreulerGraph.IsVisible = checkBox3.Checked;
+            improvedEulerGraph.IsVisible = checkBox3.Checked;
             formsPlot1.Refresh();
         }
         
@@ -104,90 +107,39 @@ namespace WindowsFormsApp1
 
         private void formsPlot1_MouseMove(object sender, MouseEventArgs e)
         {
+            List<ScatterPlot> plots = new List<ScatterPlot>();
+            ScatterPlot[] _plots =
+            {
+                exactGraph,
+                eulerGraph,
+                improvedEulerGraph,
+                rungeGraph
+            };
+            
+            plots.AddRange(_plots);
+            FindPoint points = new FindPoint(plots, formsPlot1);
+
+            ScatterPlot minPlot = points.findPointXY();
+            
             (double mouseCoordX, double mouseCoordY) = formsPlot1.GetMouseCoordinates();
             double xyRatio = formsPlot1.Plot.XAxis.Dims.PxPerUnit / formsPlot1.Plot.YAxis.Dims.PxPerUnit;
-            (double pointXexact, double pointYexact, int pointIndexexact) = exactGraph.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
-            (double pointXeuler, double pointYeuler, int pointIndexeuler) = eulerGraph.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
-            (double pointXimprove, double pointYimprove, int pointIndeximprove) = impreulerGraph.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
-            (double pointXrunge, double pointYrunge, int pointIndexrunge) = rungeGraph.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
+            (double pointX, double pointY, int pointIndex) = minPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
+
+            HighlightedPoint.Xs[0] = pointX;
+            HighlightedPoint.Ys[0] = pointY;
             
-            var distanceExact = distancetomouse(exactGraph,pointXexact, pointYexact);
-            var distanceEuler = distancetomouse(eulerGraph,pointXeuler, pointYeuler);
-            var distanceImprove = distancetomouse(impreulerGraph,pointXimprove, pointYimprove);
-            var distanceRunge = distancetomouse(rungeGraph,pointXrunge, pointYrunge);
+            HighlightedPoint.IsVisible = true;
 
-            var minDistance = Math.Min(distanceExact, distanceEuler);
-            minDistance = Math.Min(minDistance, distanceImprove);
-            minDistance = Math.Min(minDistance, distanceRunge);
-
-            if (minDistance == distanceExact)
+            
+            if (LastHighlightedIndex != pointIndex)
             {
-                HighlightedPoint.Xs[0] = pointXexact;
-                HighlightedPoint.Ys[0] = pointYexact;
-                HighlightedPoint.IsVisible = true;
-
-                // render if the highlighted point chnaged
-                if (LastHighlightedIndex != pointIndexexact)
-                {
-                    LastHighlightedIndex = pointIndexexact;
-                    formsPlot1.Render();
-                }
-                formsPlot1.Refresh();
-
-                // update the GUI to describe the highlighted point
-                label5.Text = $@"Exact point index {pointIndexexact} at ({pointXexact:N2}, {pointYexact:N2})";
-            }else if (minDistance==distanceEuler)
-            {
-                HighlightedPoint.Xs[0] = pointXeuler;
-                HighlightedPoint.Ys[0] = pointYeuler;
-                HighlightedPoint.IsVisible = true;
-
-                // render if the highlighted point chnaged
-                if (LastHighlightedIndex != pointIndexeuler)
-                {
-                    LastHighlightedIndex = pointIndexeuler;
-                    formsPlot1.Render();
-                }
-                formsPlot1.Refresh();
-
-                // update the GUI to describe the highlighted point
-                label5.Text = $@"Euler point index {pointIndexeuler} at ({pointXeuler:N2}, {pointYeuler:N2})";
-            }else if (minDistance == distanceImprove)
-            {
-                HighlightedPoint.Xs[0] = pointXimprove;
-                HighlightedPoint.Ys[0] = pointYimprove;
-                HighlightedPoint.IsVisible = true;
-
-                // render if the highlighted point chnaged
-                if (LastHighlightedIndex != pointIndeximprove)
-                {
-                    LastHighlightedIndex = pointIndeximprove;
-                    formsPlot1.Render();
-                }
-                formsPlot1.Refresh();
-
-                // update the GUI to describe the highlighted point
-                label5.Text = $@"Euler improve point index {pointIndeximprove} at ({pointXimprove:N2}, {pointYimprove:N2})";
-            }else if (minDistance == distanceRunge)
-            {
-                HighlightedPoint.Xs[0] = pointXrunge;
-                HighlightedPoint.Ys[0] = pointYrunge;
-                HighlightedPoint.IsVisible = true;
-
-                // render if the highlighted point chnaged
-                if (LastHighlightedIndex != pointIndexrunge)
-                {
-                    LastHighlightedIndex = pointIndexrunge;
-                    formsPlot1.Render();
-                }
-                formsPlot1.Refresh();
-
-                // update the GUI to describe the highlighted point
-                label5.Text = $@"Runge Kutta point index {pointIndexrunge} at ({pointXrunge:N2}, {pointYrunge:N2})";
+                LastHighlightedIndex = pointIndex;
+                formsPlot1.Render();
             }
+            formsPlot1.Refresh();
 
-            // place the highlight over the point of interest
             
+            label5.Text = $@"{minPlot.Label} point index {pointIndex} at ({pointX:N2}, {pointY:N2})";
         }
 
 

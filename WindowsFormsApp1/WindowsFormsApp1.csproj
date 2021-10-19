@@ -82,6 +82,7 @@
     <ItemGroup>
         <Compile Include="Euler.cs" />
         <Compile Include="Exact.cs" />
+        <Compile Include="FindPoint.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>
