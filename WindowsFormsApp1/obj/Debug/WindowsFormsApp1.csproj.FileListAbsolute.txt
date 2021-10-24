@@ -7,9 +7,7 @@ C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Windows
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
-C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Plot.resources
-C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.MaxError.resources
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\FSharp.Core.dll
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\aisen\RiderProjects\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\OxyPlot.dll

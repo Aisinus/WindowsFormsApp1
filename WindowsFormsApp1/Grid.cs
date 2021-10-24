@@ -6,16 +6,17 @@ namespace WindowsFormsApp1
     {
         public double[] x;
         public double[] y;
-        public int N;
+        public int n;
         public double h;
-
-        public Grid(int N, double x0,double y0, double X)
+        public string name;
+        public Grid(int N, double x0,double y0, double X, string newname)
         {
+            n = N+1;
             h = (X - x0) / N;
-            x = new double[N];
-            y = new double[N];
-
-            for (int i = 0; i < N; i++)
+            x = new double[n];
+            y = new double[n];
+            name = newname;
+            for (int i = 0; i < n; i++)
             {
                 if (i == 0)
                 {

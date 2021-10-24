@@ -2,9 +2,9 @@
 {
     public class ImprovedEuler:Grid
     {
-        public ImprovedEuler(int N, double x0, double y0, double X) : base(N, x0, y0, X)
+        public ImprovedEuler(int N, double x0, double y0, double X) : base(N, x0, y0, X,"improved euler")
         {
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < n; i++)
             {
                 if (i == 0)
                 {
