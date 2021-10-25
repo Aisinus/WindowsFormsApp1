@@ -85,6 +85,7 @@
         <Compile Include="FindPoint.cs" />
         <Compile Include="GraphDraw.cs" />
         <Compile Include="Grid.cs" />
+        <Compile Include="HighlightedPoint.cs" />
         <Compile Include="ImprovedEuler.cs" />
         <Compile Include="LTEerror.cs" />
         <Compile Include="MaxError.cs" />
