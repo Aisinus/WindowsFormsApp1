@@ -19,12 +19,12 @@ namespace WindowsFormsApp1
             point.IsVisible = false;
         }
 
-        public void isVisible(bool visibility)
+        public void IsVisible(bool visibility)
         {
             point.IsVisible = visibility;
         }
 
-        public void changePoint(double x, double y)
+        public void ChangePoint(double x, double y)
         {
             point.Xs[0] = x;
             point.Ys[0] = y;
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             return index;
         }
 
-        public void setIndex(int newIndex)
+        public void SetIndex(int newIndex)
         {
             index = newIndex;
         }

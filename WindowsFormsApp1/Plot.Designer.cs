@@ -335,7 +335,7 @@ namespace WindowsFormsApp1
             this.textN.Name = "textN";
             this.textN.Size = new System.Drawing.Size(573, 21);
             this.textN.TabIndex = 4;
-            this.textN.Text = "5";
+            this.textN.Text = "6";
             // 
             // textBox1
             // 

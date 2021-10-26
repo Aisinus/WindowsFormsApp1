@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
 
 namespace WindowsFormsApp1
 {
@@ -7,12 +9,14 @@ namespace WindowsFormsApp1
         public double[] x;
         public double[] y;
         public int n;
-        public double h;
+        protected double h;
         public string name;
-        public Grid(int N, double x0,double y0, double X, string newname)
+
+        [SuppressMessage("ReSharper.DPA", "DPA0003: Excessive memory allocations in LOH", MessageId = "type: System.Double[]")]
+        public Grid(int N, double x0, double y0, double X, string newname)
         {
-            n = N+1;
-            h = (X - x0) / N;
+            n = N + 1;
+            h =  (X - x0) / N;
             x = new double[n];
             y = new double[n];
             name = newname;
@@ -29,10 +33,10 @@ namespace WindowsFormsApp1
             }
         }
 
-        public double differentialEquation(double x, double y)
+        protected static double DifferentialEquation(double x1, double y1)
         {
-            return ((y/x)-x*Math.Pow(Math.E,(y/x)));
+
+            return ((y1 / x1) - x1 * Math.Pow(Math.E, (y1 / x1)));
         }
-        
     }
 }

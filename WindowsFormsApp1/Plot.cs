@@ -18,22 +18,14 @@ namespace WindowsFormsApp1
         private HighlightedPoint secondHP;
         private HighlightedPoint thirdHP;
 
-        void ThirdGraphDraw(int Nmin, int Nmax, double x0, double y0, double X)
+        private void ThirdGraphDraw(List<Grid> maxErrors)
         {
             formsPlot3.Plot.Clear();
             formsPlot3.Plot.Title("Max Error");
 
             thirdHP = new HighlightedPoint(formsPlot3);
 
-            MaxError maxError = new MaxError(Nmin, Nmax, x0, y0, X);
-            List<Grid> grids = new List<Grid>();
-            grids.AddRange(new List<Grid>
-            {
-                maxError.eulerMaxError(),
-                maxError.eulerImproveMaxError(),
-                maxError.rungeKuttaMaxError(),
-            });
-            GraphDraw graphDraw = new GraphDraw(formsPlot3, grids);
+            GraphDraw graphDraw = new GraphDraw(formsPlot3, maxErrors);
             thirdform_graphs = graphDraw.returnPlots();
 
             thirdform_graphs.First(g => g.Label == "euler").IsVisible = checkBox2.Checked;
@@ -45,24 +37,14 @@ namespace WindowsFormsApp1
         }
 
 
-        void SecondGraphDraw(Exact exact, Euler euler, ImprovedEuler improvedEuler, RungeKutta rungeKutta)
+        private void SecondGraphDraw(List<Grid> LTEGrids)
         {
             formsPlot2.Plot.Clear();
             formsPlot2.Plot.Title("Local Errors");
 
             secondHP = new HighlightedPoint(formsPlot2);
 
-            LTEerror eulerError = new LTEerror(exact, euler);
-            LTEerror eulerimproveError = new LTEerror(exact, improvedEuler);
-            LTEerror rungeError = new LTEerror(exact, rungeKutta);
-            List<Grid> grids = new List<Grid>();
-            grids.AddRange(new List<Grid>
-            {
-                eulerError,
-                eulerimproveError,
-                rungeError,
-            });
-            GraphDraw graphDraw = new GraphDraw(formsPlot2, grids);
+            GraphDraw graphDraw = new GraphDraw(formsPlot2, LTEGrids);
             secondform_graphs = graphDraw.returnPlots();
 
             secondform_graphs.First(g => g.Label == "euler").IsVisible = checkBox2.Checked;
@@ -74,21 +56,12 @@ namespace WindowsFormsApp1
         }
 
 
-        void FirstGraphDraw(Exact exact, Euler euler, ImprovedEuler improvedEuler, RungeKutta rungeKutta)
+        private void FirstGraphDraw(List<Grid> listofGrids)
         {
             formsPlot1.Plot.Clear();
             formsPlot1.Plot.Title("Values");
 
             firstHP = new HighlightedPoint(formsPlot1);
-
-            List<Grid> listofGrids = new List<Grid>();
-            listofGrids.AddRange(new List<Grid>
-            {
-                exact,
-                euler,
-                improvedEuler,
-                rungeKutta,
-            });
 
             GraphDraw graphDraw = new GraphDraw(formsPlot1, listofGrids);
 
@@ -98,7 +71,7 @@ namespace WindowsFormsApp1
             firstform_graphs.First(g => g.Label == "euler").IsVisible = checkBox2.Checked;
             firstform_graphs.First(g => g.Label == "improved euler").IsVisible = checkBox3.Checked;
             firstform_graphs.Find(g => g.Label == "runge kutta").IsVisible = checkBox4.Checked;
-            
+
             formsPlot1.Refresh();
             formsPlot1.Plot.Legend();
         }
@@ -125,10 +98,38 @@ namespace WindowsFormsApp1
                 ImprovedEuler improvedEuler = new ImprovedEuler(N, x0, y0, X);
                 RungeKutta rungeKutta = new RungeKutta(N, x0, y0, X);
 
-
-                ThirdGraphDraw(Nmin,Nmax,x0,y0,X);
-                SecondGraphDraw(exact,euler,improvedEuler,rungeKutta);
-                FirstGraphDraw(exact,euler,improvedEuler,rungeKutta);
+                List<Grid> listofGrids = new List<Grid>();
+                listofGrids.AddRange(new List<Grid>
+                {
+                    exact,
+                    euler,
+                    improvedEuler,
+                    rungeKutta,
+                });
+                
+                LTEerror eulerError = new LTEerror(exact, euler);
+                LTEerror eulerimproveError = new LTEerror(exact, improvedEuler);
+                LTEerror rungeError = new LTEerror(exact, rungeKutta);
+                List<Grid> LTEGrids = new List<Grid>();
+                LTEGrids.AddRange(new List<Grid>
+                {
+                    eulerError,
+                    eulerimproveError,
+                    rungeError,
+                });
+                
+                MaxError maxError = new MaxError(Nmin, Nmax, x0, y0, X);
+                List<Grid> maxErros = new List<Grid>();
+                maxErros.AddRange(new List<Grid>
+                {
+                    maxError.eulerMaxError(),
+                    maxError.eulerImproveMaxError(),
+                    maxError.rungeKuttaMaxError(),
+                });
+                
+                ThirdGraphDraw(maxErros);
+                SecondGraphDraw(LTEGrids);
+                FirstGraphDraw(listofGrids);
             }
             catch (Exception exception)
             {
@@ -181,12 +182,12 @@ namespace WindowsFormsApp1
             double xyRatio = formsPlot1.Plot.XAxis.Dims.PxPerUnit / formsPlot1.Plot.YAxis.Dims.PxPerUnit;
             (double pointX, double pointY, int pointIndex) = minPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
 
-            firstHP.changePoint(pointX,pointY);
-            firstHP.isVisible(true);
+            firstHP.ChangePoint(pointX, pointY);
+            firstHP.IsVisible(true);
 
             if (firstHP.GetIndex() != pointIndex)
             {
-                firstHP.setIndex(pointIndex);
+                firstHP.SetIndex(pointIndex);
                 formsPlot1.Render();
             }
 
@@ -205,12 +206,12 @@ namespace WindowsFormsApp1
             double xyRatio = formsPlot2.Plot.XAxis.Dims.PxPerUnit / formsPlot2.Plot.YAxis.Dims.PxPerUnit;
             (double pointX, double pointY, int pointIndex) = minPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
 
-            secondHP.changePoint(pointX,pointY);
-            secondHP.isVisible(true);
+            secondHP.ChangePoint(pointX, pointY);
+            secondHP.IsVisible(true);
 
             if (secondHP.GetIndex() != pointIndex)
             {
-                secondHP.setIndex(pointIndex);
+                secondHP.SetIndex(pointIndex);
                 formsPlot2.Render();
             }
 
@@ -235,17 +236,18 @@ namespace WindowsFormsApp1
             double xyRatio = formsPlot3.Plot.XAxis.Dims.PxPerUnit / formsPlot3.Plot.YAxis.Dims.PxPerUnit;
             (double pointX, double pointY, int pointIndex) = minPlot.GetPointNearest(mouseCoordX, mouseCoordY, xyRatio);
 
-            thirdHP.changePoint(pointX,pointY);
-            thirdHP.isVisible(true);
+            thirdHP.ChangePoint(pointX, pointY);
+            thirdHP.IsVisible(true);
 
             if (thirdHP.GetIndex() != pointIndex)
             {
-                thirdHP.setIndex(pointIndex);
+                thirdHP.SetIndex(pointIndex);
                 formsPlot3.Render();
             }
 
             formsPlot3.Refresh();
             label7.Text = $@"{minPlot.Label} point index {pointIndex} at ({pointX:N2}, {pointY:N2})";
         }
+        
     }
 }

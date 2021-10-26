@@ -12,10 +12,10 @@
                 }
                 else
                 {
-                    var k1 = differentialEquation(x[i - 1], y[i - 1]);
-                    var k2 = differentialEquation(x[i-1]+h/2,y[i-1]+(h*k1)/2);
-                    var k3 = differentialEquation(x[i-1]+h/2,y[i-1]+(h*k2)/2);
-                    var k4 = differentialEquation(x[i-1]+h,y[i-1]+h*k3);
+                    var k1 = DifferentialEquation(x[i - 1], y[i - 1]);
+                    var k2 = DifferentialEquation(x[i-1]+h/2,y[i-1]+(h*k1)/2);
+                    var k3 = DifferentialEquation(x[i-1]+h/2,y[i-1]+(h*k2)/2);
+                    var k4 = DifferentialEquation(x[i-1]+h,y[i-1]+h*k3);
                     y[i] = y[i - 1] + h * (k1 / 6 + k2 / 3 + k3 / 3 + k4 / 6);
                 }
             }
